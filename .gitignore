@@ -1,8 +1,6 @@
 *.out
 *.o
 *.d
-*.s
-*.S
 .*.swp
 compile_commands.json
 .cache/
