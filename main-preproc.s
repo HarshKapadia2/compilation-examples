@@ -1,8 +1,15 @@
-	.file	"hello-world.c"
+	.file	"main.c"
 	.text
+	.globl	GLOBAL_VAR
 	.section	.rodata
 .LC0:
-	.string	"Hello world!"
+	.string	"This is the 'GLOBAL_VAR'."
+	.section	.data.rel.local,"aw"
+	.align 8
+	.type	GLOBAL_VAR, @object
+	.size	GLOBAL_VAR, 8
+GLOBAL_VAR:
+	.quad	.LC0
 	.text
 	.globl	main
 	.type	main, @function
@@ -15,7 +22,7 @@ main:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
-	leaq	.LC0(%rip), %rax
+	movq	GLOBAL_VAR(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
 	movl	$0, %eax
