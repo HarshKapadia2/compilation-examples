@@ -52,23 +52,23 @@ Output: [`main.s`](main.s)
 
 Even if the preprocessed file generated in the Prepreocessing step
 ([`main.i`](main.i)) is used, the same output as the above command can be
-expected. This can be verified.
+expected. This can be verified:
 
-After running the above command, run
+-	After running the above command, run
 
-```shell
-$ gcc -S main.i -o main-preproc.s
-```
+	```shell
+	$ gcc -S main.i -o main-preproc.s
+	```
 
-Output: [`main-preproc.s`](main-preproc.s)
+	Output: [`main-preproc.s`](main-preproc.s)
 
-Now, to verify the differences between the output files `main.s` and
-`main-preproc.s`:
+-	Now, to verify the differences between the output files `main.s` and
+	`main-preproc.s`:
 
-```shell
-$ diff -s main.s main-preproc.s
-Files main.s and main-preproc.s are identical
-```
+	```shell
+	$ diff -s main.s main-preproc.s
+	Files main.s and main-preproc.s are identical
+	```
 
 ## Resources
 
