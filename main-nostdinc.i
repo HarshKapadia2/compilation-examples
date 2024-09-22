@@ -9,6 +9,9 @@ main.c:2:19: error: no include path in which to search for stdio.h
 
 
 
+
+
+
 const char *GLOBAL_VAR = "This is the 'GLOBAL_VAR'.";
 # 2 "main.c" 2
 
@@ -18,6 +21,7 @@ const char *GLOBAL_VAR = "This is the 'GLOBAL_VAR'.";
 int main() {
 
     printf("%s\n", GLOBAL_VAR);
+    printf("%s\n", "69");
 
 
 

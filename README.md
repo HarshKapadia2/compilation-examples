@@ -155,9 +155,12 @@ Disassembly of section .text:
    8:   48 8b 05 00 00 00 00    mov    0x0(%rip),%rax        # f <main+0xf>
    f:   48 89 c7                mov    %rax,%rdi
   12:   e8 00 00 00 00          call   17 <main+0x17>
-  17:   b8 00 00 00 00          mov    $0x0,%eax
-  1c:   5d                      pop    %rbp
-  1d:   c3                      ret
+  17:   48 8d 05 00 00 00 00    lea    0x0(%rip),%rax        # 1e <main+0x1e>
+  1e:   48 89 c7                mov    %rax,%rdi
+  21:   e8 00 00 00 00          call   26 <main+0x26>
+  26:   b8 00 00 00 00          mov    $0x0,%eax
+  2b:   5d                      pop    %rbp
+  2c:   c3                      ret
 ```
 
 As a side note, the machine code instructions consist of an Opcode and
@@ -191,6 +194,7 @@ Running the output file
 ```shell
 $ ./a.out
 This is the 'GLOBAL_VAR'.
+69
 ```
 
 The output file is an executable ELF file.
@@ -219,6 +223,7 @@ Running the output file
 ```shell
 $ ./a-ld.out
 This is the 'GLOBAL_VAR'.
+69
 ```
 
 ## Resources
