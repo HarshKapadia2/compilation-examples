@@ -8,6 +8,9 @@
 
 
 
+
+
+
 const char *GLOBAL_VAR = "This is the 'GLOBAL_VAR'.";
 # 2 "main.c" 2
 # 1 "/usr/include/stdio.h" 1 3 4
@@ -749,6 +752,7 @@ extern int __overflow (FILE *, int);
 int main() {
 
     printf("%s\n", GLOBAL_VAR);
+    printf("%s\n", "69");
 
 
 

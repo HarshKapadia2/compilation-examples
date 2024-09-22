@@ -10,6 +10,9 @@
 	.size	GLOBAL_VAR, 8
 GLOBAL_VAR:
 	.quad	.LC0
+	.section	.rodata
+.LC1:
+	.string	"69"
 	.text
 	.globl	main
 	.type	main, @function
@@ -23,6 +26,9 @@ main:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	movq	GLOBAL_VAR(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	leaq	.LC1(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
 	movl	$0, %eax
