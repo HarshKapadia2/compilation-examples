@@ -120,7 +120,14 @@ The same output can be generated through the following commands:
 
 Object (`*.o`) files can be examined using
 [parse-elf](https://github.com/HarshKapadia2/parse-elf), `readelf`, `objdump`,
-etc.
+`file`, etc.
+
+Eg:
+
+```shell
+$ file main.o
+main.o: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV), not stripped
+```
 
 Eg:
 
@@ -184,6 +191,13 @@ Running the output file
 ```shell
 $ ./a.out
 This is the 'GLOBAL_VAR'.
+```
+
+The output file is an executable ELF file.
+
+```shell
+$ file a.out
+a.out: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=d3f6d6241d69c2e0de9d136fb09190d9175f5171, for GNU/Linux 3.2.0, not stripped
 ```
 
 GNU's Linker (`ld`) can also be used to link files.
