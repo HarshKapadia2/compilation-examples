@@ -160,7 +160,7 @@ An opcode is an operation that the CPU can understand and execute. What an
 opcode represents is dependent on the Instruction Set Architecture (ISA) of the
 processor and is usually very well documented. (Eg: Vol. 2A of the [Intel 64 and IA-32 Architectures Software Developer Manuals](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html))
 
-[More information](https://stackoverflow.com/questions/17638888/difference-between-opcode-byte-code-mnemonics-machine-code-and-assembly)
+[More information on opcodes, mnemonics, machine code, etc.](https://stackoverflow.com/questions/17638888/difference-between-opcode-byte-code-mnemonics-machine-code-and-assembly)
 
 ## Linking
 
@@ -179,6 +179,13 @@ Output: [`a.out`](a.out)
 The default file name for the executable `a.out` is an abbreviation for
 'assembler output'.
 
+Running the output file
+
+```shell
+$ ./a.out
+This is the 'GLOBAL_VAR'.
+```
+
 GNU's Linker (`ld`) can also be used to link files.
 
 ```shell
@@ -192,6 +199,13 @@ All the extra files apart from `main.o` in the `ld` command are to set up the
 by helping set up important registers for the program.
 
 [More information on the `crtxxx.o` files.](https://dev.gentoo.org/%7Evapier/crt.txt)
+
+Running the output file
+
+```shell
+$ ./a-ld.out
+This is the 'GLOBAL_VAR'.
+```
 
 ## Resources
 
