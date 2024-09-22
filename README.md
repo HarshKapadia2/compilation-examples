@@ -1,11 +1,19 @@
 # Compilation Examples
 
+<p align="center">
+    <img src="compilation-steps.png" alt="The high level view of the compilation and loading steps of a program." loading="lazy" />
+	<br />
+    <sub>
+        Image source: <a href="https://www.tenouk.com/ModuleW.html" target="_blank" rel="noreferrer">Compiler, Assembler, Linker and Loader: A Brief Story</a>
+    </sub>
+</p>
+
 Examples to illustrate all the basic steps of compilation
 
--	Preprocessing
--	Compilation
--	Assembling
--	Linking
+-   Preprocessing
+-   Compilation
+-   Assembling
+-   Linking
 
 Created for [talks.harshkapadia.me/elf](https://talks.harshkapadia.me/elf).
 
@@ -18,21 +26,21 @@ instructions with code.
 
 ### Commands
 
--	Normal preprocessing
+-   Normal preprocessing
 
-	```shell
-	$ gcc -E main.c > main.i
-	```
+    ```shell
+    $ gcc -E main.c > main.i
+    ```
 
-	Output: [`main.i`](main.i)
+    Output: [`main.i`](main.i)
 
--	Preprocessing without standard includes
+-   Preprocessing without standard includes
 
-	```shell
-	$ gcc -E -nostdinc main.c > main-nostdinc.i 2>&1
-	```
+    ```shell
+    $ gcc -E -nostdinc main.c > main-nostdinc.i 2>&1
+    ```
 
-	Output: [`main-nostdinc.i`](main-nostdinc.i)
+    Output: [`main-nostdinc.i`](main-nostdinc.i)
 
 ## Compilation
 
@@ -54,21 +62,21 @@ Even if the preprocessed file generated in the Prepreocessing step
 ([`main.i`](main.i)) is used, the same output as the above command can be
 expected. This can be verified:
 
--	After running the above command, run
+-   After running the above command, run
 
-	```shell
-	$ gcc -S main.i -o main-preproc.s
-	```
+    ```shell
+    $ gcc -S main.i -o main-preproc.s
+    ```
 
-	Output: [`main-preproc.s`](main-preproc.s)
+    Output: [`main-preproc.s`](main-preproc.s)
 
--	Now, to verify the differences between the output files `main.s` and
-	`main-preproc.s`:
+-   Now, to verify the differences between the output files `main.s` and
+    `main-preproc.s`:
 
-	```shell
-	$ diff -s main.s main-preproc.s
-	Files main.s and main-preproc.s are identical
-	```
+    ```shell
+    $ diff -s main.s main-preproc.s
+    Files main.s and main-preproc.s are identical
+    ```
 
 ## Assembling
 
@@ -87,34 +95,34 @@ Output: [`main.o`](main.o)
 
 The same output can be generated through the following commands:
 
--	Using GCC with the `main.s` file generated in the previous step
+-   Using GCC with the `main.s` file generated in the previous step
 
-	```shell
-	$ gcc -c main.s -o main-s.o
-	```
+    ```shell
+    $ gcc -c main.s -o main-s.o
+    ```
 
-	Output: [`main-s.o`](main-s.o)
+    Output: [`main-s.o`](main-s.o)
 
--	Using the assembler `as` (GNU Assembler)
+-   Using the assembler `as` (GNU Assembler)
 
-	```shell
-	$ as main.s -o main-as.o
-	```
+    ```shell
+    $ as main.s -o main-as.o
+    ```
 
-	Output: [`main-as.o`](main-as.o)
+    Output: [`main-as.o`](main-as.o)
 
--	Comparing the output of the three object files
+-   Comparing the output of the three object files
 
-	```shell
-	$ diff -s main.o main-s.o
-	Files main.o and main-s.o are identical
+    ```shell
+    $ diff -s main.o main-s.o
+    Files main.o and main-s.o are identical
 
-	$ diff -s main-s.o main-as.o
-	Files main-s.o and main-as.o are identical
+    $ diff -s main-s.o main-as.o
+    Files main-s.o and main-as.o are identical
 
-	# If main.o and main-s.o, and main-s.o and main-as.o are identical, then
-	# main.o and main-as.o are also identical.
-	```
+    # If main.o and main-s.o, and main-s.o and main-as.o are identical, then
+    # main.o and main-as.o are also identical.
+    ```
 
 ### Examining Object Files
 
@@ -228,25 +236,24 @@ This is the 'GLOBAL_VAR'.
 
 ## Resources
 
--	General
-	-	[Compiler, Assembler, Linker and Loader: A Brief Story](https://www.tenouk.com/ModuleW.html)
-	-	[How does the compilation/linking process work?](https://stackoverflow.com/questions/6264249/how-does-the-compilation-linking-process-work)
-	-	[Compiler, Linker, Assembler, and Loader](https://www.baeldung.com/cs/compiler-linker-assembler-loaderhttps://www.baeldung.com/cs/compiler-linker-assembler-loader)
-	-	[Running gcc's steps manually, compiling, assembling, linking](https://stackoverflow.com/questions/8527743/running-gccs-steps-manually-compiling-assembling-linking)
--	Preprocessing
-	-	[Running gcc's steps manually, compiling, assembling, linking](https://stackoverflow.com/questions/8527743/running-gccs-steps-manually-compiling-assembling-linking)
-	-	[How to view C preprocessor output?](https://stackoverflow.com/questions/3742822/how-to-view-c-preprocessor-output)
-	-	[[Interpreting] Preprocessor Output](https://gcc.gnu.org/onlinedocs/cpp/Preprocessor-Output.html)
--	Assemling
-	-	[Running gcc's steps manually, compiling, assembling, linking](https://stackoverflow.com/questions/8527743/running-gccs-steps-manually-compiling-assembling-linking)
-	-	[Difference between: Opcode, byte code, mnemonics, machine code and assembly](https://stackoverflow.com/questions/17638888/difference-between-opcode-byte-code-mnemonics-machine-code-and-assembly)
-	-	[Intel 64 and IA-32 Architectures Software Developer Manuals](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html)
-	-	[x86 and amd64 instruction reference](https://www.felixcloutier.com/x86)
-	-	[X86 Opcode and Instruction Reference](https://ref.x86asm.net)
--	Linking
-	-	[Running gcc's steps manually, compiling, assembling, linking](https://stackoverflow.com/questions/8527743/running-gccs-steps-manually-compiling-assembling-linking)
-	-	[How to link a gas assembly program that uses the C standard library with ld without using gcc?](https://stackoverflow.com/questions/3577922/how-to-link-a-gas-assembly-program-that-uses-the-c-standard-library-with-ld-with)
-	-	[More information on the `crtxxx.o` files.](https://dev.gentoo.org/%7Evapier/crt.txt)
-	-	[How to write and execute PURE machine code manually without containers like EXE or ELF?](https://stackoverflow.com/a/58489219/11958552)
-	-	[How does a linker know what all libraries to link?](https://stackoverflow.com/questions/9248533/how-does-a-linker-know-what-all-libraries-to-link)
-
+-   General
+    -   [Compiler, Assembler, Linker and Loader: A Brief Story](https://www.tenouk.com/ModuleW.html)
+    -   [How does the compilation/linking process work?](https://stackoverflow.com/questions/6264249/how-does-the-compilation-linking-process-work)
+    -   [Compiler, Linker, Assembler, and Loader](https://www.baeldung.com/cs/compiler-linker-assembler-loaderhttps://www.baeldung.com/cs/compiler-linker-assembler-loader)
+    -   [Running gcc's steps manually, compiling, assembling, linking](https://stackoverflow.com/questions/8527743/running-gccs-steps-manually-compiling-assembling-linking)
+-   Preprocessing
+    -   [Running gcc's steps manually, compiling, assembling, linking](https://stackoverflow.com/questions/8527743/running-gccs-steps-manually-compiling-assembling-linking)
+    -   [How to view C preprocessor output?](https://stackoverflow.com/questions/3742822/how-to-view-c-preprocessor-output)
+    -   [[Interpreting] Preprocessor Output](https://gcc.gnu.org/onlinedocs/cpp/Preprocessor-Output.html)
+-   Assemling
+    -   [Running gcc's steps manually, compiling, assembling, linking](https://stackoverflow.com/questions/8527743/running-gccs-steps-manually-compiling-assembling-linking)
+    -   [Difference between: Opcode, byte code, mnemonics, machine code and assembly](https://stackoverflow.com/questions/17638888/difference-between-opcode-byte-code-mnemonics-machine-code-and-assembly)
+    -   [Intel 64 and IA-32 Architectures Software Developer Manuals](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html)
+    -   [x86 and amd64 instruction reference](https://www.felixcloutier.com/x86)
+    -   [X86 Opcode and Instruction Reference](https://ref.x86asm.net)
+-   Linking
+    -   [Running gcc's steps manually, compiling, assembling, linking](https://stackoverflow.com/questions/8527743/running-gccs-steps-manually-compiling-assembling-linking)
+    -   [How to link a gas assembly program that uses the C standard library with ld without using gcc?](https://stackoverflow.com/questions/3577922/how-to-link-a-gas-assembly-program-that-uses-the-c-standard-library-with-ld-with)
+    -   [More information on the `crtxxx.o` files.](https://dev.gentoo.org/%7Evapier/crt.txt)
+    -   [How to write and execute PURE machine code manually without containers like EXE or ELF?](https://stackoverflow.com/a/58489219/11958552)
+    -   [How does a linker know what all libraries to link?](https://stackoverflow.com/questions/9248533/how-does-a-linker-know-what-all-libraries-to-link)
