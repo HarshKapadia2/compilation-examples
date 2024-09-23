@@ -1,5 +1,23 @@
 # Compilation Examples
 
+## Table of Contents
+
+-	[Introduction](#introduction)
+-	[Preprocessing](#preprocessing)
+	-	[Commands](#commands)
+-	[Compilation](#compilation)
+	-	[Commands](#commands-1)
+-	[Assembling](#assembling)
+	-	[Commands](#commands-2)
+	-	[Examining Object Files](#examining-object-files)
+-	[Linking](#linking)
+	-	[Commands](#commands-3)
+	-	[Examining Executable Files](#examining-executable-files)
+	-	[Static and Dynamic Linking](#static-and-dynamic-linking)
+-	[Resources](#resources)
+
+## Introduction
+
 <p align="center">
     <img src="compilation-steps.png" alt="The high level view of the compilation and loading steps of a program." loading="lazy" />
 	<br />
