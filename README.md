@@ -224,7 +224,7 @@ All the extra files apart from `main.o` in the `ld` command are to set up the
 `_start`, 'init' and 'fini' symbols and functions, which bootstrap the program
 by helping set up important registers for the program.
 
-[More information on the `crtxxx.o` files.](https://dev.gentoo.org/%7Evapier/crt.txt)
+[More information on the `crtxxx.o` files.](https://dev.gentoo.org/%7Evapier/crt.txt) (The letters `crt` are an abbreviation for 'C RunTime'.)
 
 Running the output file
 
@@ -232,6 +232,62 @@ Running the output file
 $ ./a-ld.out
 This is the 'GLOBAL_VAR'.
 69
+```
+
+### Examining Executable Files
+
+Executable files are ELF files that can be examined similar to Object files, as
+shown above in the ['Examining Object Files' section](#examining-object-files).
+
+```shell
+$ file a.out
+a.out: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=c070be8a9201dd54b100277176bed8c1b6d68ffe, for GNU/Linux 3.2.0, not stripped
+```
+
+In the ['Examining Object Files' section](#examining-object-files) above, the
+`main.o` file was disassembled. Let us check if disassembling the fully compiled
+executable `a.out` yields a different disassembled `main` function.
+
+```shell
+$ objdump -d a.out
+# ...
+
+0000000000001149 <main>:
+    1149:       f3 0f 1e fa             endbr64
+    114d:       55                      push   %rbp
+    114e:       48 89 e5                mov    %rsp,%rbp
+    1151:       48 8b 05 b8 2e 00 00    mov    0x2eb8(%rip),%rax        # 4010 <GLOBAL_VAR>
+    1158:       48 89 c7                mov    %rax,%rdi
+    115b:       e8 f0 fe ff ff          call   1050 <puts@plt>
+    1160:       48 8d 05 b7 0e 00 00    lea    0xeb7(%rip),%rax        # 201e <_IO_stdin_used+0x1e>
+    1167:       48 89 c7                mov    %rax,%rdi
+    116a:       e8 e1 fe ff ff          call   1050 <puts@plt>
+    116f:       b8 00 00 00 00          mov    $0x0,%eax
+    1174:       5d                      pop    %rbp
+    1175:       c3                      ret
+
+# ...
+```
+
+The opcodes in the instructions are unchanged, but there is a difference between
+the addresses in the operands. This fully compiled version knows the location
+(address) of the library functions and variables required to run the program,
+unlike the disassembled output of the object file `main.o`.
+
+Some of the changes:
+
+```shell
+# main.o
+           8:   48 8b 05 00 00 00 00    mov    0x0(%rip),%rax        # f <main+0xf>
+# a.out
+    1151:       48 8b 05 b8 2e 00 00    mov    0x2eb8(%rip),%rax        # 4010 <GLOBAL_VAR>
+
+# ----------------
+
+# main.o
+          12:   e8 00 00 00 00          call   17 <main+0x17>
+# a.out
+    115b:       e8 f0 fe ff ff          call   1050 <puts@plt>
 ```
 
 ## Resources
