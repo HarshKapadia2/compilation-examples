@@ -1,5 +1,13 @@
 # Compilation Examples
 
+<p align="center">
+    <img src="compilation-steps.png" alt="The high level view of the compilation and loading steps of a program." loading="lazy" />
+	<br />
+    <sub>
+        Image source: <a href="https://www.tenouk.com/ModuleW.html" target="_blank" rel="noreferrer">Compiler, Assembler, Linker and Loader: A Brief Story</a>
+    </sub>
+</p>
+
 Examples to illustrate all the basic steps of compilation
 
 -	Preprocessing
