@@ -1,0 +1,27 @@
+
+main-riscv.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	1141                	add	sp,sp,-16
+   2:	e406                	sd	ra,8(sp)
+   4:	e022                	sd	s0,0(sp)
+   6:	0800                	add	s0,sp,16
+   8:	00000797          	auipc	a5,0x0
+   c:	00078793          	mv	a5,a5
+  10:	639c                	ld	a5,0(a5)
+  12:	853e                	mv	a0,a5
+  14:	00000097          	auipc	ra,0x0
+  18:	000080e7          	jalr	ra # 14 <main+0x14>
+  1c:	00000517          	auipc	a0,0x0
+  20:	00050513          	mv	a0,a0
+  24:	00000097          	auipc	ra,0x0
+  28:	000080e7          	jalr	ra # 24 <main+0x24>
+  2c:	4781                	li	a5,0
+  2e:	853e                	mv	a0,a5
+  30:	60a2                	ld	ra,8(sp)
+  32:	6402                	ld	s0,0(sp)
+  34:	0141                	add	sp,sp,16
+  36:	8082                	ret

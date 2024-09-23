@@ -1,0 +1,123 @@
+
+a-riscv.out:     file format elf64-littleriscv
+
+
+Disassembly of section .plt:
+
+0000000000000590 <.plt>:
+ 590:	00002397          	auipc	t2,0x2
+ 594:	41c30333          	sub	t1,t1,t3
+ 598:	a803be03          	ld	t3,-1408(t2) # 2010 <__TMC_END__>
+ 59c:	fd430313          	add	t1,t1,-44
+ 5a0:	a8038293          	add	t0,t2,-1408
+ 5a4:	00135313          	srl	t1,t1,0x1
+ 5a8:	0082b283          	ld	t0,8(t0)
+ 5ac:	000e0067          	jr	t3
+
+00000000000005b0 <__libc_start_main@plt>:
+ 5b0:	00002e17          	auipc	t3,0x2
+ 5b4:	a70e3e03          	ld	t3,-1424(t3) # 2020 <__libc_start_main@GLIBC_2.34>
+ 5b8:	000e0367          	jalr	t1,t3
+ 5bc:	00000013          	nop
+
+00000000000005c0 <puts@plt>:
+ 5c0:	00002e17          	auipc	t3,0x2
+ 5c4:	a68e3e03          	ld	t3,-1432(t3) # 2028 <puts@GLIBC_2.27>
+ 5c8:	000e0367          	jalr	t1,t3
+ 5cc:	00000013          	nop
+
+Disassembly of section .text:
+
+00000000000005d0 <_start>:
+ 5d0:	022000ef          	jal	5f2 <load_gp>
+ 5d4:	87aa                	mv	a5,a0
+ 5d6:	00002517          	auipc	a0,0x2
+ 5da:	a6a53503          	ld	a0,-1430(a0) # 2040 <_GLOBAL_OFFSET_TABLE_+0x10>
+ 5de:	6582                	ld	a1,0(sp)
+ 5e0:	0030                	add	a2,sp,8
+ 5e2:	ff017113          	and	sp,sp,-16
+ 5e6:	4681                	li	a3,0
+ 5e8:	4701                	li	a4,0
+ 5ea:	880a                	mv	a6,sp
+ 5ec:	fc5ff0ef          	jal	5b0 <__libc_start_main@plt>
+ 5f0:	9002                	ebreak
+
+00000000000005f2 <load_gp>:
+ 5f2:	00002197          	auipc	gp,0x2
+ 5f6:	20e18193          	add	gp,gp,526 # 2800 <__global_pointer$>
+ 5fa:	8082                	ret
+	...
+
+00000000000005fe <deregister_tm_clones>:
+ 5fe:	00002517          	auipc	a0,0x2
+ 602:	a1250513          	add	a0,a0,-1518 # 2010 <__TMC_END__>
+ 606:	00002797          	auipc	a5,0x2
+ 60a:	a0a78793          	add	a5,a5,-1526 # 2010 <__TMC_END__>
+ 60e:	00a78863          	beq	a5,a0,61e <deregister_tm_clones+0x20>
+ 612:	00002797          	auipc	a5,0x2
+ 616:	a267b783          	ld	a5,-1498(a5) # 2038 <_ITM_deregisterTMCloneTable@Base>
+ 61a:	c391                	beqz	a5,61e <deregister_tm_clones+0x20>
+ 61c:	8782                	jr	a5
+ 61e:	8082                	ret
+
+0000000000000620 <register_tm_clones>:
+ 620:	00002517          	auipc	a0,0x2
+ 624:	9f050513          	add	a0,a0,-1552 # 2010 <__TMC_END__>
+ 628:	00002597          	auipc	a1,0x2
+ 62c:	9e858593          	add	a1,a1,-1560 # 2010 <__TMC_END__>
+ 630:	8d89                	sub	a1,a1,a0
+ 632:	4035d793          	sra	a5,a1,0x3
+ 636:	91fd                	srl	a1,a1,0x3f
+ 638:	95be                	add	a1,a1,a5
+ 63a:	8585                	sra	a1,a1,0x1
+ 63c:	c599                	beqz	a1,64a <register_tm_clones+0x2a>
+ 63e:	00002797          	auipc	a5,0x2
+ 642:	a127b783          	ld	a5,-1518(a5) # 2050 <_ITM_registerTMCloneTable@Base>
+ 646:	c391                	beqz	a5,64a <register_tm_clones+0x2a>
+ 648:	8782                	jr	a5
+ 64a:	8082                	ret
+
+000000000000064c <__do_global_dtors_aux>:
+ 64c:	1141                	add	sp,sp,-16
+ 64e:	e022                	sd	s0,0(sp)
+ 650:	00002417          	auipc	s0,0x2
+ 654:	a0840413          	add	s0,s0,-1528 # 2058 <completed.0>
+ 658:	00044783          	lbu	a5,0(s0)
+ 65c:	e406                	sd	ra,8(sp)
+ 65e:	e385                	bnez	a5,67e <__do_global_dtors_aux+0x32>
+ 660:	00002797          	auipc	a5,0x2
+ 664:	9e87b783          	ld	a5,-1560(a5) # 2048 <__cxa_finalize@GLIBC_2.27>
+ 668:	c791                	beqz	a5,674 <__do_global_dtors_aux+0x28>
+ 66a:	00002517          	auipc	a0,0x2
+ 66e:	99653503          	ld	a0,-1642(a0) # 2000 <__dso_handle>
+ 672:	9782                	jalr	a5
+ 674:	f8bff0ef          	jal	5fe <deregister_tm_clones>
+ 678:	4785                	li	a5,1
+ 67a:	00f40023          	sb	a5,0(s0)
+ 67e:	60a2                	ld	ra,8(sp)
+ 680:	6402                	ld	s0,0(sp)
+ 682:	0141                	add	sp,sp,16
+ 684:	8082                	ret
+
+0000000000000686 <frame_dummy>:
+ 686:	bf69                	j	620 <register_tm_clones>
+
+0000000000000688 <main>:
+ 688:	1141                	add	sp,sp,-16
+ 68a:	e406                	sd	ra,8(sp)
+ 68c:	e022                	sd	s0,0(sp)
+ 68e:	0800                	add	s0,sp,16
+ 690:	00002797          	auipc	a5,0x2
+ 694:	97878793          	add	a5,a5,-1672 # 2008 <GLOBAL_VAR>
+ 698:	639c                	ld	a5,0(a5)
+ 69a:	853e                	mv	a0,a5
+ 69c:	f25ff0ef          	jal	5c0 <puts@plt>
+ 6a0:	00000517          	auipc	a0,0x0
+ 6a4:	04050513          	add	a0,a0,64 # 6e0 <_IO_stdin_used+0x28>
+ 6a8:	f19ff0ef          	jal	5c0 <puts@plt>
+ 6ac:	4781                	li	a5,0
+ 6ae:	853e                	mv	a0,a5
+ 6b0:	60a2                	ld	ra,8(sp)
+ 6b2:	6402                	ld	s0,0(sp)
+ 6b4:	0141                	add	sp,sp,16
+ 6b6:	8082                	ret
