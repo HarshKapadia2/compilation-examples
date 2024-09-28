@@ -392,6 +392,7 @@ Dynamic linking can be of two types:
 -	Assemling
 	-	[Running gcc's steps manually, compiling, assembling, linking](https://stackoverflow.com/questions/8527743/running-gccs-steps-manually-compiling-assembling-linking)
 	-	[Difference between: Opcode, byte code, mnemonics, machine code and assembly](https://stackoverflow.com/questions/17638888/difference-between-opcode-byte-code-mnemonics-machine-code-and-assembly)
+ 	-	[Decoding x86 instructions with help of octal digits](https://www.youtube.com/watch?v=hN7mJ4nXC7M)
 	-	[Intel 64 and IA-32 Architectures Software Developer Manuals](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html)
 	-	[x86 and amd64 instruction reference](https://www.felixcloutier.com/x86)
 	-	[X86 Opcode and Instruction Reference](https://ref.x86asm.net)
