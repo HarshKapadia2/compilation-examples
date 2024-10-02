@@ -403,4 +403,8 @@ Dynamic linking can be of two types:
 	-	[How to write and execute PURE machine code manually without containers like EXE or ELF?](https://stackoverflow.com/a/58489219/11958552)
 	-	[How does a linker know what all libraries to link?](https://stackoverflow.com/questions/9248533/how-does-a-linker-know-what-all-libraries-to-link)
 	-	[What do 'statically linked' and 'dynamically linked' mean?](https://stackoverflow.com/questions/311882/what-do-statically-linked-and-dynamically-linked-mean)
-
+ 	-	Shared objects and `ldd` output
+  		-	[Where do executables look for shared objects at runtime?](https://unix.stackexchange.com/questions/22926/where-do-executables-look-for-shared-objects-at-runtime)
+    		-	[How Do so (Shared Object) Filenames Work?](https://www.baeldung.com/linux/shared-object-filenames)
+    		-	[Where is linux-vdso.so.1 present on the file system](https://stackoverflow.com/questions/58657036/where-is-linux-vdso-so-1-present-on-the-file-system)
+      		-	[What is /lib64/ld-linux-x86-64.so.2 and why can it be used to execute file?](https://unix.stackexchange.com/questions/400621/what-is-lib64-ld-linux-x86-64-so-2-and-why-can-it-be-used-to-execute-file)
