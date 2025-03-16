@@ -398,6 +398,7 @@ Dynamic linking can be of two types:
 	-	[X86 Opcode and Instruction Reference](https://ref.x86asm.net)
 -	Linking
 	-	[Running gcc's steps manually, compiling, assembling, linking](https://stackoverflow.com/questions/8527743/running-gccs-steps-manually-compiling-assembling-linking)
+ 	-	[Why does the order in which libraries are linked sometimes cause errors in GCC?](https://stackoverflow.com/questions/45135/why-does-the-order-in-which-libraries-are-linked-sometimes-cause-errors-in-gcc)
 	-	[How to link a gas assembly program that uses the C standard library with ld without using gcc?](https://stackoverflow.com/questions/3577922/how-to-link-a-gas-assembly-program-that-uses-the-c-standard-library-with-ld-with)
 	-	[More information on the `crtxxx.o` files.](https://dev.gentoo.org/%7Evapier/crt.txt)
 	-	[How to write and execute PURE machine code manually without containers like EXE or ELF?](https://stackoverflow.com/a/58489219/11958552)
